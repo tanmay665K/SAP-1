@@ -182,7 +182,14 @@ T3 or the **memory state** is when SAP-1 reads the actual instruction from memor
 
 Now, we will move onto the remaining states (T4-T6) for each instruction (LDA, ADD, SUB, HLT, OUT).
 
+**1. LDA**
+ - For the LDA or Load Accumalator, in the T4 state, CW = `0x090`, where bit 10 = 1, i.e., load MAR from the the bus and bit 7 = 1, i.e., the IR will output the address to the bus. 
+ - In the T5 state, bit 8 = 1, the RAM will output to the bus, bit 5 = 1, so the output from RAM will carry the data via the bus and load the accumalator.
 
+ **2. ADD**
+ - The T4 state for ADD is the same as LDA, CW = `0x090`.
+ - In the T5 state, CW = `0x102`, so bit 8 and bit 1 both will be set to logic 1 or HIGH, so that the RAM will send the output to the bus, which will load the register B with that data.
+ - In the T6 state, CW = `0x028`, 
 
 
 
